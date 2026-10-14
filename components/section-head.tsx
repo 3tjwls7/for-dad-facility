@@ -1,32 +1,51 @@
 import { Reveal } from "@/components/reveal";
 
+export function SectionLabel({
+  label,
+  light = false,
+  labelAs = "span",
+  id,
+}: {
+  label: string;
+  light?: boolean;
+  labelAs?: "span" | "h1" | "h2";
+  id?: string;
+}) {
+  const Label = labelAs;
+  const color = light ? "border-bone/40 text-bone" : "border-ink/30 text-ink";
+
+  return (
+    <Label id={id} className={`inline-flex min-h-10 items-center rounded-full border px-5 text-[0.9375rem] font-semibold md:min-h-11 md:text-base ${color}`}>
+      {label}
+    </Label>
+  );
+}
+
 export function SectionHead({
-  index,
   eyebrow,
   title,
   aside,
   id,
   light = false,
+  level = "h2",
 }: {
-  index: string;
   eyebrow: string;
   title: string;
   aside?: string;
   id?: string;
   light?: boolean;
+  level?: "h1" | "h2";
 }) {
-  const line = light ? "border-bone/15" : "border-ink/15";
+  const Heading = level;
+  const asideColor = light ? "text-bone/75" : "text-ink/70";
   return (
     <Reveal className="mb-14 md:mb-20">
-      <div className={`flex items-center gap-3 border-b pb-5 ${line}`}>
-        <span className="text-sm font-bold text-copper">{index}</span>
-        <span className="text-base font-bold">{eyebrow}</span>
-      </div>
-      <div className="mt-8 grid items-end gap-6 lg:grid-cols-12">
-        <h2 id={id} className="text-[clamp(2.125rem,5vw,5rem)] leading-[1.08] font-bold tracking-[-0.045em] whitespace-pre-line lg:col-span-8">
+      <SectionLabel label={eyebrow} light={light} />
+      <div className="mt-6 max-w-[1200px]">
+        <Heading id={id} className="text-[clamp(2.25rem,4vw,3.5rem)] leading-[1.15] font-bold tracking-[-0.04em] [text-wrap:balance]">
           {title}
-        </h2>
-        {aside ? <p className="max-w-[36ch] text-base leading-7 opacity-80 lg:col-span-4 lg:justify-self-end">{aside}</p> : null}
+        </Heading>
+        {aside ? <p className={`mt-5 max-w-[72ch] text-lg leading-8 font-medium [text-wrap:pretty] ${asideColor}`}>{aside}</p> : null}
       </div>
     </Reveal>
   );

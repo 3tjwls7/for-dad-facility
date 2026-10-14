@@ -104,7 +104,7 @@ export async function getServices(): Promise<ServiceItem[]> {
         return {
           category,
           name: row.name,
-          description: row.description,
+          description: match?.description ?? row.description,
           keywords: match?.keywords ?? [],
           image: row.image_path
             ? {
@@ -148,7 +148,8 @@ export async function getSettings(): Promise<SiteSettings> {
 }
 
 export async function getAboutPhoto() {
-  return localAboutPhoto();
+  const project = await getProject("buried-piping-2023");
+  return project?.images.find((image) => image.sortOrder === 4) ?? project?.cover ?? localAboutPhoto();
 }
 
 export { categoryLabel } from "@/content/copy";

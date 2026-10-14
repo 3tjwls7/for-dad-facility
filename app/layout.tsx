@@ -3,32 +3,58 @@ import { JetBrains_Mono } from "next/font/google";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { getSettings } from "@/lib/queries";
+import { configuredSiteUrl, homeDescription, homeTitle, ogImage, requestSiteUrl } from "@/lib/seo";
 import "./globals.css";
 
 const jetbrains = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains" });
 
-export const metadata: Metadata = {
-  title: {
-    default: "태양설비공사 | 홍천 보일러 · 배관 · 누수 · 하수구 · 정화조 · 집수리",
-    template: "%s | 태양설비공사",
-  },
-  description: "강원도 홍천 설비 시공. 보일러 설치·교체, 배관, 누수, 하수구, 정화조, 집수리를 실제 현장 사진으로 확인하세요.",
-  keywords: ["홍천보일러", "홍천배관공사", "홍천누수", "홍천하수구", "홍천정화조", "홍천집수리"],
-};
+export const dynamic = "force-dynamic";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const configured = configuredSiteUrl();
+  const base = configured ?? (await requestSiteUrl());
+  return {
+    metadataBase: base ?? undefined,
+    title: {
+      default: homeTitle,
+      template: "%s | 태양설비",
+    },
+    description: homeDescription,
+    alternates: configured ? { canonical: "/" } : undefined,
+    openGraph: {
+      title: homeTitle,
+      description: homeDescription,
+      locale: "ko_KR",
+      type: "website",
+      url: configured ? "/" : undefined,
+      images: [ogImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: homeTitle,
+      description: homeDescription,
+      images: [ogImage.url],
+    },
+  };
+}
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const settings = await getSettings();
+  const configured = configuredSiteUrl();
+  const base = configured ?? (await requestSiteUrl());
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "HVACBusiness",
+    "@type": "LocalBusiness",
     name: settings.businessName,
     telephone: settings.phone ?? undefined,
     areaServed: settings.region ?? undefined,
     sameAs: settings.blogUrl ? [settings.blogUrl] : undefined,
+    url: configured?.origin,
+    image: base ? new URL(ogImage.url, base).href : undefined,
   };
 
   return (
-    <html lang="ko" className={jetbrains.variable}>
+    <html lang="ko" className={jetbrains.variable} data-scroll-behavior="smooth">
       <head>
         <link
           rel="stylesheet"

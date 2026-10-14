@@ -16,36 +16,36 @@ export const settingsCopy = {
   region: "강원도 홍천",
   blogUrl: "https://blog.naver.com/kim5369kim",
   about:
-    "홍천의 주택과 부지에서 보일러·배관·정화조 작업을 합니다. 현장을 먼저 확인한 뒤 필요한 자재와 배관 경로를 정합니다.",
+    "보일러, 배관, 누수, 하수구, 정화조, 집수리까지. 홍천 어디든 찾아가 원인을 확인하고 직접 시공하는 설비업체입니다.",
 };
 
 export const heroCopy = {
-  lead: "현장을 직접 확인하고, 필요한 작업만 정확하게 안내합니다.",
+  lead: "보일러부터 정화조까지, 집 설비는 한 곳에 맡기세요.\n홍천 어디든 직접 찾아가 시공합니다.",
 };
 
 export const aboutCopy = {
-  eyebrow: "About",
+  headline: "설비는 묻거나 가리고 나면\n다시 열기 어렵습니다.",
   description:
-    "태양설비공사는 홍천의 주택과 부지에서 보일러·배관·정화조 작업을 합니다. 현장을 먼저 확인한 뒤 필요한 자재와 배관 경로를 정합니다.",
+    "그래서 태양설비는 시공 전에 집 구조와 사용량, 들어갈 자재를 먼저 확인하고 필요한 만큼 제대로 시공합니다.",
+  photoCaption: "실제 시공 현장 · 배관 매설",
   principles: [
-    { title: "원인부터 확인", text: "막힘, 누수, 난방 불량이 어디서 시작되는지 범위를 먼저 봅니다." },
-    { title: "현장에 맞게", text: "공간과 용량, 쓸 자재를 현장에 맞춰 정합니다." },
-    { title: "시공 후 연락", text: "작업이 끝난 뒤에도 같은 번호로 이어서 문의할 수 있습니다." },
+    { title: "원인부터 짚습니다", text: "막힘, 누수, 보일러 문제인지 먼저 확인하고 증상만 보고 덮지 않습니다." },
+    { title: "집에 맞춰 시공합니다", text: "공간 크기와 사용량, 배관 길이와 자재를 집마다 따져 정합니다." },
+    { title: "합리적인 비용과 사후 관리", text: "필요한 공사만 안내하고, 시공 후 A/S도 같은 번호로 받습니다." },
   ],
   realPhoto: { logNo: "223051143138", sortOrder: 4 },
 };
 
 export const contactCopy = {
-  eyebrow: "Contact",
-  title: ["설비 문제,", "전화 한 통으로 시작하세요."],
-  text: "증상과 위치만 알려 주셔도 됩니다. \n어떤 작업이 필요한지는 현장을 보고 말씀드립니다.",
+  title: ["설비가 고장 났다면,", "바로 전화 주세요."],
+  text: "난방이 안 될 때, 물이 샐 때, 하수구가 막혔을 때 \n증상과 위치만 말씀해 주시면 홍천 어디든 찾아가 확인합니다.",
 };
 
 export const nav = [
-  { id: "services", label: "서비스", en: "Services" },
-  { id: "works", label: "시공 사례", en: "Works" },
-  { id: "about", label: "소개", en: "About" },
-  { id: "contact", label: "문의", en: "Contact" },
+  { id: "services", href: "/#services", label: "서비스", en: "Services" },
+  { id: "works", href: "/projects", label: "시공 사례", en: "Works" },
+  { id: "about", href: "/#about", label: "소개", en: "About" },
+  { id: "contact", href: "/#contact", label: "문의", en: "Contact" },
 ] as const;
 
 export type ProjectCopy = {
@@ -283,42 +283,42 @@ export const servicesCopy: {
   {
     category: "boiler",
     name: "보일러 설치 · 교체",
-    description: "벽걸이와 실내 설치를 포함해, 본체와 난방·온수 배관을 함께 연결합니다.",
+    description: "집 구조와 공간에 맞는 보일러를 고르고, 난방·온수 배관까지 연결해 바로 따뜻하게 쓰시도록 설치합니다.",
     keywords: ["본체 교체", "난방 배관", "온수"],
     cover: { logNo: "223051132816", sortOrder: 7 },
   },
   {
     category: "plumbing",
     name: "배관 · 수도설비",
-    description: "급수와 배수 배관을 땅에 묻거나, 이미 있는 관을 구간에 맞춰 바꿉니다.",
+    description: "배관 길이와 자재를 먼저 정한 뒤 땅을 파고 묻습니다. 물이 막힘 없이 들어오고 빠지도록 연결합니다.",
     keywords: ["매설", "수도 인입", "트렌치"],
     cover: { logNo: "223051143138", sortOrder: 5 },
   },
   {
     category: "leak",
     name: "누수 확인 · 보수",
-    description: "새는 구간을 찾은 뒤, 그 자리의 배관을 고치거나 바꿉니다.",
+    description: "어디서 새는지부터 찾고, 그 구간 배관을 고치거나 바꿉니다. 같은 자리가 다시 새지 않게 마무리합니다.",
     keywords: ["누수 위치", "배관 교체", "보수"],
     cover: { logNo: "222934140702", sortOrder: 4 },
   },
   {
     category: "drain",
     name: "하수구 뚫음",
-    description: "막힌 배수관의 안을 확인하고, 흐름이 막힌 구간을 처리합니다.",
+    description: "막힌 원인과 위치를 확인하고, 장비로 관을 상하지 않게 뚫습니다. 물 쓰는 불편을 바로 덜어 드립니다.",
     keywords: ["관 내부", "맨홀", "배수"],
     cover: { logNo: "223051139168", sortOrder: 5 },
   },
   {
     category: "septic",
     name: "정화조 시공",
-    description: "탱크를 묻고 오수·하수 배관을 연결한 뒤, 상부를 마감합니다.",
+    description: "쓰는 인원과 용량에 맞는 정화조를 고르고, 묻기부터 오수 배관 연결, 상부 마감까지 한 번에 시공합니다.",
     keywords: ["매설", "배관 연결", "상부 마감"],
     cover: { logNo: "223051136448", sortOrder: 8 },
   },
   {
     category: "repair",
     name: "집수리",
-    description: "주택 바깥의 설비와 외부를, 현장에서 확인한 범위만큼 고칩니다.",
+    description: "오래 산 집에서 생긴 문제를 원인부터 확인하고, 바꿀 곳은 확실히 바꿔 다시 문제가 생기지 않게 고칩니다.",
     keywords: ["주택 외부", "연결부", "부분 수리"],
     cover: { logNo: "223051129360", sortOrder: 5 },
   },
